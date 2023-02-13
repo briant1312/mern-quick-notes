@@ -1,6 +1,7 @@
 import { useState } from "react"
+import { logIn } from "../../utilities/users-service"
 
-export default function LoginForm() {
+export default function LoginForm({setUser}) {
     const [credentials, setCredentials] = useState({
         email: '',
         password: '',
@@ -16,8 +17,13 @@ export default function LoginForm() {
     }
 
     async function handleSubmit(e) {
-        e.preventDefault()
-        console.log(credentials)
+        try {
+            e.preventDefault()
+            const user = await logIn(credentials)
+            setUser(user)
+        } catch {
+            setError('Error Logging In')
+        }
     }
 
     return (

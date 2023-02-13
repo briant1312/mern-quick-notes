@@ -15,6 +15,8 @@ const PORT = process.env.PORT || 3001
 app.use(logger('dev'))
 app.use(express.json())
 
+app.use(require('./config/checkToken'))
+
 // configure both the server-favicon and the static middleware
 // to server from the production build folder
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')))
