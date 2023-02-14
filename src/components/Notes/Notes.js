@@ -33,9 +33,9 @@ export default function Notes({user}) {
             <button>Submit</button>
         </form>
         <div className="notes-container">
-            {notes && notes.map((note, index) => (
+            {notes && notes.length > 0 ? notes.map((note, index) => (
                 <Note text={note.text} createdAt={note.createdAt} key={index}/>
-            ))}
+            )) : "no notes yet"}
         </div>
     </>
   )
